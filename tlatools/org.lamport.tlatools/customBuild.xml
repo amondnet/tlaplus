@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TLA+ Tools" default="default" xmlns:jacoco="antlib:org.jacoco.ant">
+<project name="TLA+ Tools" default="default" xmlns:jacoco="antlib:org.jacoco.ant" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
 	<!-- load property file -->
 	<loadproperties srcfile="project.properties" />
@@ -604,19 +604,163 @@
 		</jar>
 	</target>
 
-	<!-- Tested with GraalVM CE 24.0.1: https://github.com/graalvm/graalvm-ce-builds/releases/tag/jdk-24.0.1 -->
-	<target name="dist-sany-graal-native" depends="dist">
+	<condition property="graalvm.bin" value="${env.GRAALVM_HOME}/bin/" else="">
+		<isset property="env.GRAALVM_HOME" />
+	</condition>
+	<condition property="native-image.cmd" value="native-image.cmd" else="native-image">
+		<os family="windows" />
+	</condition>
+	<condition property="native.exe.suffix" value=".exe" else="">
+		<os family="windows" />
+	</condition>
+	<condition property="native.sany.error.rc" value="-1" else="255">
+		<os family="windows" />
+	</condition>
+	<property name="native.metadata.dir" location="${src.dir}/META-INF/native-image/org.lamport/tlatools" />
+	<property name="native.workload.dir" location="native-image/trace" />
+	<property name="native.work.dir" location="target/native-image" />
+	<property name="native.dist.dir" location="${dist.dir}/native" />
+
+	<macrodef name="native-image-tool">
+		<attribute name="tool" />
+		<attribute name="main" />
+		<attribute name="expected" default="0" />
+		<element name="arguments" implicit="true" />
+		<sequential>
+			<local name="native.rc" />
+			<echo>@{tool} (expecting exit code @{expected})</echo>
+			<exec if:set="native.trace" executable="${graalvm.bin}java" dir="${native.work.dir}/trace"
+				resultproperty="native.rc" output="${native.work.dir}/@{tool}.log" append="true">
+				<arg value="-agentlib:native-image-agent=config-merge-dir=${native.metadata.dir}" />
+				<arg value="-cp" />
+				<arg file="${dist.file}" />
+				<arg value="@{main}" />
+				<arguments />
+			</exec>
+			<exec unless:set="native.trace" executable="${native.dist.dir}/@{tool}${native.exe.suffix}" dir="${native.work.dir}/trace"
+				resultproperty="native.rc" output="${native.work.dir}/@{tool}.log" append="true">
+				<arguments />
+			</exec>
+			<fail message="@{tool} exited with ${native.rc} instead of @{expected}; see ${native.work.dir}/@{tool}.log">
+				<condition>
+					<not><equals arg1="${native.rc}" arg2="@{expected}" /></not>
+				</condition>
+			</fail>
+		</sequential>
+	</macrodef>
+	<presetdef name="native-sany"><native-image-tool tool="sany" main="tla2sany.SANY" /></presetdef>
+	<presetdef name="native-pcal"><native-image-tool tool="pcal" main="pcal.trans" /></presetdef>
+	<presetdef name="native-tlc"><native-image-tool tool="tlc" main="tlc2.TLC" /></presetdef>
+
+	<macrodef name="native-image-workload">
+		<sequential>
+			<delete dir="${native.work.dir}" />
+			<copy todir="${native.work.dir}/trace">
+				<fileset dir="${native.workload.dir}" />
+			</copy>
+			<native-sany>
+				<arg value="-error-codes" />
+				<arg line="Bags.tla FiniteSets.tla Integers.tla Json.tla Naturals.tla Randomization.tla RealTime.tla Reals.tla Sequences.tla TLC.tla TLCExt.tla Toolbox.tla _JsonTrace.tla _Possible.tla _TLCTrace.tla" />
+				<arg value="NativeTrace.tla" />
+			</native-sany>
+			<native-sany expected="4">
+				<arg line="-error-codes NativeTraceSemanticError.tla" />
+			</native-sany>
+			<native-sany expected="${native.sany.error.rc}">
+				<arg line="-error-codes NativeTraceParseError.tla" />
+			</native-sany>
+			<native-pcal>
+				<arg line="-termination NativeTracePCal.tla" />
+			</native-pcal>
+			<native-pcal>
+				<arg line="-label NativeTracePCalC.tla" />
+			</native-pcal>
+			<native-tlc>
+				<arg line="-workers 2 -coverage 1 -dump dot,colorize,actionlabels states NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg line="-config NativeTraceSymmetry.cfg -workers 1 -fpbits 1 NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg line="-config NativeTraceSymmetry.cfg -dfid 6 NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg line="-simulate num=20 -depth 15 -seed 1 NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg line="-generate num=5 -depth 10 NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg line="-config NativeTracePossible.cfg NativeTrace" />
+			</native-tlc>
+			<native-tlc expected="12">
+				<arg line="-config NativeTraceSafety.cfg -dumpTrace json trace.json NativeTrace" />
+			</native-tlc>
+			<native-tlc expected="11">
+				<arg line="-config NativeTraceDeadlock.cfg -tool -noGenerateSpecTE NativeTrace" />
+			</native-tlc>
+			<native-tlc expected="13">
+				<arg line="-config NativeTraceLiveness.cfg -lncheck final NativeTrace" />
+			</native-tlc>
+			<native-tlc>
+				<arg value="NativeTracePCal" />
+			</native-tlc>
+			<native-tlc>
+				<arg value="NativeTracePCalC" />
+			</native-tlc>
+		</sequential>
+	</macrodef>
+
+	<target name="native-image-trace" description="Regenerates the GraalVM reachability metadata with the tracing agent">
+		<delete dir="${native.metadata.dir}" />
+		<mkdir dir="${native.metadata.dir}" />
+		<local name="native.trace" />
+		<property name="native.trace" value="true" />
+		<native-image-workload />
+		<copy todir="${class.dir}/META-INF/native-image">
+			<fileset dir="${src.dir}/META-INF/native-image" />
+		</copy>
+	</target>
+
+	<macrodef name="native-image-build">
+		<attribute name="name" />
+		<attribute name="main" />
+		<attribute name="optimization" default="-O2" />
+		<element name="options" optional="true" />
+		<sequential>
+			<exec executable="${graalvm.bin}${native-image.cmd}" failonerror="true">
+				<arg value="-cp" />
+				<arg file="${dist.file}" />
+				<arg value="@{optimization}" />
+				<options />
+				<arg value="-o" />
+				<arg file="${native.dist.dir}/@{name}" />
+				<arg value="@{main}" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target name="dist-sany-graal-native" depends="dist" description="Builds SANY as a GraalVM native executable">
 		<echo>WARNING: This feature is experimental and subject to change.</echo>
-		<exec executable="native-image">
-			<arg value="-cp" />
-			<arg value="${dist.file}" />
-			<arg value="-H:+UnlockExperimentalVMOptions" /> <!-- Required for -H:IncludeResources (as of Graal 24.0.1) -->
-			<arg value="-H:IncludeResources=tla2sany/.*" /> <!-- Make sure to include resource files (i.e. standard library modules) -->
-			<arg value="-H:-CheckToolchain" /> <!-- Make Graal a little more permissive in exotic environments -->
-			<arg value="-Os" />
-			<arg value="tla2sany.SANY" />
-			<arg value="sany" />
-		</exec>
+		<mkdir dir="${native.dist.dir}" />
+		<native-image-build name="sany" main="tla2sany.SANY" optimization="-Os" />
+	</target>
+
+	<target name="dist-graal-native" depends="dist-sany-graal-native" description="Builds SANY, the PlusCal translator, and TLC as GraalVM native executables">
+		<native-image-build name="pcal" main="pcal.trans" optimization="-Os" />
+		<!-- A native executable runs on the OS thread stack (often 8MB) unless   -->
+		<!-- told otherwise, so an unbounded recursion in a spec takes minutes to  -->
+		<!-- overflow. Default to the JVM's 1MB; -Xss overrides it at run time.    -->
+		<native-image-build name="tlc" main="tlc2.TLC">
+			<options>
+				<arg value="-R:StackSize=1m" />
+				<arg if:set="native.gc" value="--gc=${native.gc}" />
+			</options>
+		</native-image-build>
+	</target>
+
+	<target name="test-graal-native" description="Smoke-tests the GraalVM native executables">
+		<native-image-workload />
 	</target>
 
 	<!-- Compiles the TLA+ tools *test* code -->

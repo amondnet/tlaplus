@@ -1,0 +1,1480 @@
+{
+  "reflection": [
+    {
+      "type": "Bags"
+    },
+    {
+      "type": "FiniteSets"
+    },
+    {
+      "type": "Integers"
+    },
+    {
+      "type": "Json"
+    },
+    {
+      "type": "NativeTrace"
+    },
+    {
+      "type": "NativeTracePCal"
+    },
+    {
+      "type": "NativeTracePCalC"
+    },
+    {
+      "type": "Naturals"
+    },
+    {
+      "type": "Randomization"
+    },
+    {
+      "type": "Sequences"
+    },
+    {
+      "type": "Strings"
+    },
+    {
+      "type": "TLC"
+    },
+    {
+      "type": "TLCExt"
+    },
+    {
+      "type": "_JsonTrace"
+    },
+    {
+      "type": "_Possible"
+    },
+    {
+      "type": "_TLCTrace"
+    },
+    {
+      "type": "boolean[]"
+    },
+    {
+      "type": "byte[]"
+    },
+    {
+      "type": "char[]"
+    },
+    {
+      "type": "com.sun.management.GarbageCollectorMXBean"
+    },
+    {
+      "type": "com.sun.management.GcInfo"
+    },
+    {
+      "type": "com.sun.management.HotSpotDiagnosticMXBean"
+    },
+    {
+      "type": "com.sun.management.ThreadMXBean"
+    },
+    {
+      "type": "com.sun.management.UnixOperatingSystemMXBean"
+    },
+    {
+      "type": "com.sun.management.VMOption"
+    },
+    {
+      "type": "com.sun.management.internal.DiagnosticCommandArgumentInfo",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String",
+            "java.lang.String",
+            "java.lang.String",
+            "boolean",
+            "boolean",
+            "boolean",
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.management.internal.DiagnosticCommandArgumentInfo[]"
+    },
+    {
+      "type": "com.sun.management.internal.DiagnosticCommandInfo",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String",
+            "java.lang.String",
+            "boolean",
+            "java.util.List"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.management.internal.DiagnosticCommandInfo[]"
+    },
+    {
+      "type": "com.sun.management.internal.GarbageCollectorExtImpl"
+    },
+    {
+      "type": "com.sun.management.internal.HotSpotDiagnostic"
+    },
+    {
+      "type": "com.sun.management.internal.HotSpotThreadImpl"
+    },
+    {
+      "type": "com.sun.management.internal.OperatingSystemImpl"
+    },
+    {
+      "type": "com.sun.management.internal.VirtualThreadSchedulerImpls$VirtualThreadSchedulerImpl"
+    },
+    {
+      "type": "double[]"
+    },
+    {
+      "type": "float[]"
+    },
+    {
+      "type": "int[]"
+    },
+    {
+      "type": "java.lang.Boolean",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Byte",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Character",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Deprecated"
+    },
+    {
+      "type": "java.lang.Double",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Float",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Integer",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Long",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.ProcessHandle",
+      "methods": [
+        {
+          "name": "current",
+          "parameterTypes": []
+        },
+        {
+          "name": "pid",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Short",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.StackTraceElement"
+    },
+    {
+      "type": "java.lang.String"
+    },
+    {
+      "type": "java.lang.String[]"
+    },
+    {
+      "type": "java.lang.Void",
+      "fields": [
+        {
+          "name": "TYPE"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.management.BufferPoolMXBean"
+    },
+    {
+      "type": "java.lang.management.ClassLoadingMXBean"
+    },
+    {
+      "type": "java.lang.management.CompilationMXBean"
+    },
+    {
+      "type": "java.lang.management.LockInfo"
+    },
+    {
+      "type": "java.lang.management.MemoryMXBean"
+    },
+    {
+      "type": "java.lang.management.MemoryManagerMXBean"
+    },
+    {
+      "type": "java.lang.management.MemoryPoolMXBean"
+    },
+    {
+      "type": "java.lang.management.MemoryUsage"
+    },
+    {
+      "type": "java.lang.management.MonitorInfo"
+    },
+    {
+      "type": "java.lang.management.PlatformLoggingMXBean"
+    },
+    {
+      "type": "java.lang.management.RuntimeMXBean"
+    },
+    {
+      "type": "java.lang.management.ThreadInfo"
+    },
+    {
+      "type": "java.math.BigDecimal"
+    },
+    {
+      "type": "java.math.BigInteger"
+    },
+    {
+      "type": "java.util.Arrays",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "asList",
+          "parameterTypes": [
+            "java.lang.Object[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.util.Date"
+    },
+    {
+      "type": "javax.management.DynamicMBean"
+    },
+    {
+      "type": "javax.management.MBeanOperationInfo"
+    },
+    {
+      "type": "javax.management.MBeanServerBuilder",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "javax.management.ObjectName"
+    },
+    {
+      "type": "javax.management.StandardEmitterMBean"
+    },
+    {
+      "type": "javax.management.openmbean.CompositeData"
+    },
+    {
+      "type": "javax.management.openmbean.CompositeData[]"
+    },
+    {
+      "type": "javax.management.openmbean.OpenMBeanOperationInfoSupport"
+    },
+    {
+      "type": "javax.management.openmbean.TabularData"
+    },
+    {
+      "type": "jdk.management.VirtualThreadSchedulerMXBean"
+    },
+    {
+      "type": "jdk.management.jfr.ConfigurationInfo"
+    },
+    {
+      "type": "jdk.management.jfr.EventTypeInfo"
+    },
+    {
+      "type": "jdk.management.jfr.FlightRecorderMXBean"
+    },
+    {
+      "type": "jdk.management.jfr.FlightRecorderMXBeanImpl"
+    },
+    {
+      "type": "jdk.management.jfr.RecordingInfo"
+    },
+    {
+      "type": "jdk.management.jfr.SettingDescriptorInfo"
+    },
+    {
+      "type": "long[]"
+    },
+    {
+      "type": "short[]"
+    },
+    {
+      "type": "sun.management.ClassLoadingImpl"
+    },
+    {
+      "type": "sun.management.CompilationImpl"
+    },
+    {
+      "type": "sun.management.ManagementFactoryHelper$1"
+    },
+    {
+      "type": "sun.management.ManagementFactoryHelper$PlatformLoggingImpl"
+    },
+    {
+      "type": "sun.management.MemoryImpl"
+    },
+    {
+      "type": "sun.management.MemoryManagerImpl"
+    },
+    {
+      "type": "sun.management.MemoryPoolImpl"
+    },
+    {
+      "type": "sun.management.RuntimeImpl"
+    },
+    {
+      "type": "sun.management.VMManagementImpl",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "compTimeMonitoringSupport"
+        },
+        {
+          "name": "currentThreadCpuTimeSupport"
+        },
+        {
+          "name": "objectMonitorUsageSupport"
+        },
+        {
+          "name": "otherThreadCpuTimeSupport"
+        },
+        {
+          "name": "remoteDiagnosticCommandsSupport"
+        },
+        {
+          "name": "synchronizerUsageSupport"
+        },
+        {
+          "name": "threadAllocatedMemorySupport"
+        },
+        {
+          "name": "threadContentionMonitoringSupport"
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.NativePRNG",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.security.SecureRandomParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en_US"
+    },
+    {
+      "type": "tlc2.module.Bags",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "BagCardinality",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagCup",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagDiff",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagIn",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagOfAll",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagToSet",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "BagUnion",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "CopiesIn",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "EmptyBag",
+          "parameterTypes": []
+        },
+        {
+          "name": "IsABag",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SetToBag",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SqSubseteq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.FiniteSets",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Cardinality",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "IsFiniteSet",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.Integers",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Divide",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "DotDot",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Expt",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "GEQ",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "GT",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Int",
+          "parameterTypes": []
+        },
+        {
+          "name": "LE",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "LT",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Minus",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Mod",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Nat",
+          "parameterTypes": []
+        },
+        {
+          "name": "Neg",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Plus",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Times",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.Json",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "deserialize",
+          "parameterTypes": [
+            "tlc2.value.impl.StringValue"
+          ]
+        },
+        {
+          "name": "ndDeserialize",
+          "parameterTypes": [
+            "tlc2.value.impl.StringValue"
+          ]
+        },
+        {
+          "name": "ndSerialize",
+          "parameterTypes": [
+            "tlc2.value.impl.StringValue",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "serialize",
+          "parameterTypes": [
+            "tlc2.value.impl.StringValue",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "toJson",
+          "parameterTypes": [
+            "tlc2.value.IValue"
+          ]
+        },
+        {
+          "name": "toJsonArray",
+          "parameterTypes": [
+            "tlc2.value.IValue"
+          ]
+        },
+        {
+          "name": "toJsonObject",
+          "parameterTypes": [
+            "tlc2.value.IValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.NativeTrace"
+    },
+    {
+      "type": "tlc2.module.NativeTracePCal"
+    },
+    {
+      "type": "tlc2.module.NativeTracePCalC"
+    },
+    {
+      "type": "tlc2.module.Naturals",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Divide",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "DotDot",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Expt",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "GEQ",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "GT",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "LE",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "LT",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Minus",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Mod",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Nat",
+          "parameterTypes": []
+        },
+        {
+          "name": "Plus",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        },
+        {
+          "name": "Times",
+          "parameterTypes": [
+            "tlc2.value.impl.IntValue",
+            "tlc2.value.impl.IntValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.Randomization",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "RandomSetOfSubsets",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "RandomSubset",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "RandomSubsetSet",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.Sequences",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Append",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Concat",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Cons",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Head",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Insert",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Len",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SelectInSeq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SelectSeq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Seq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SubSeq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Tail",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.Strings",
+      "methods": [
+        {
+          "name": "STRING",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.TLC",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Any",
+          "parameterTypes": []
+        },
+        {
+          "name": "Assert",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "CombineFcn",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "JavaTime",
+          "parameterTypes": []
+        },
+        {
+          "name": "MakeFcn",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Permutations",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "Print",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "PrintT",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "RandomElement",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "SortSeq",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "ToString",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.TLCBuiltInOverrides",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.TLCEval",
+      "methods": [
+        {
+          "name": "tlcEval",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.TLCExt",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "assertError",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "error",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "getTrace",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "lassoOrdinal",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "pickSuccessor",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "tlcDefByName",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "tlcDefer",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "tlcEval2",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "tlcFingerprint",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "tlcGetOrDefault",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "tlcModelValue",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        },
+        {
+          "name": "tlcNoOp",
+          "parameterTypes": [
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.TLCGetSet",
+      "methods": [
+        {
+          "name": "TLCGetEval",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        },
+        {
+          "name": "TLCSet",
+          "parameterTypes": [
+            "tlc2.value.impl.Value",
+            "tlc2.value.impl.Value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module._JsonTrace",
+      "methods": [
+        {
+          "name": "tlcState",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module._Possible",
+      "fields": [
+        {
+          "name": "serialVersionUID"
+        }
+      ],
+      "methods": [
+        {
+          "name": "counts",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module._TLCTrace",
+      "methods": [
+        {
+          "name": "ioDeserialize",
+          "parameterTypes": [
+            "tlc2.value.impl.StringValue"
+          ]
+        },
+        {
+          "name": "ioSerialize",
+          "parameterTypes": [
+            "tlc2.value.IValue",
+            "tlc2.value.impl.StringValue"
+          ]
+        },
+        {
+          "name": "tlcState",
+          "parameterTypes": [
+            "tlc2.tool.impl.Tool",
+            "tla2sany.semantic.ExprOrOpArgNode[]",
+            "tlc2.util.Context",
+            "tlc2.tool.TLCState",
+            "tlc2.tool.TLCState",
+            "int",
+            "tlc2.tool.coverage.CostModel"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.module.tlc2.overrides.TLCOverrides"
+    },
+    {
+      "type": "tlc2.overrides.TLCOverrides"
+    },
+    {
+      "type": "tlc2.tool.distributed.management.TLCStatisticsMXBean"
+    },
+    {
+      "type": "tlc2.tool.fp.MSBDiskFPSet",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "tlc2.tool.fp.FPSetConfiguration"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tlc2.tool.fp.management.DiskFPSetMXBean"
+    },
+    {
+      "type": "tlc2.tool.fp.management.DiskFPSetMXWrapper"
+    },
+    {
+      "type": "tlc2.tool.management.ModelCheckerMXWrapper"
+    },
+    {
+      "type": "tlc2.tool.management.TLCStandardMBean"
+    },
+    {
+      "type": "tlc2.tool.management.TLCStandardMBean$NullTLCStandardMBean"
+    },
+    {
+      "type": "tlc2.util.statistics.management.BucketStatisticsMXBean"
+    },
+    {
+      "type": "tlc2.util.statistics.management.BucketStatisticsMXWrapper"
+    }
+  ],
+  "resources": [
+    {
+      "glob": "Bags.class"
+    },
+    {
+      "glob": "FiniteSets.class"
+    },
+    {
+      "glob": "Integers.class"
+    },
+    {
+      "glob": "Json.class"
+    },
+    {
+      "glob": "META-INF/MANIFEST.MF"
+    },
+    {
+      "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "NativeTrace.class"
+    },
+    {
+      "glob": "NativeTracePCal.class"
+    },
+    {
+      "glob": "NativeTracePCalC.class"
+    },
+    {
+      "glob": "Naturals.class"
+    },
+    {
+      "glob": "Randomization.class"
+    },
+    {
+      "glob": "Sequences.class"
+    },
+    {
+      "glob": "Strings.class"
+    },
+    {
+      "glob": "TLC.class"
+    },
+    {
+      "glob": "TLCExt.class"
+    },
+    {
+      "glob": "_JsonTrace.class"
+    },
+    {
+      "glob": "_Possible.class"
+    },
+    {
+      "glob": "_TLCTrace.class"
+    },
+    {
+      "glob": "model/MC.cfg"
+    },
+    {
+      "glob": "model/generated.properties"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Bags.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Bags.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/FiniteSets.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/FiniteSets.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Integers.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Integers.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Json.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Json.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/NativeTrace.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/NativeTracePCal.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/NativeTracePCalC.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Naturals.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Naturals.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Randomization.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Randomization.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/RealTime.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Reals.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Sequences.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Sequences.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Strings.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/TLC.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/TLC.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/TLCExt.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/TLCExt.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/Toolbox.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_JsonTrace.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_JsonTrace.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_Possible.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_Possible.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_TLCTrace.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/_TLCTrace.tla"
+    },
+    {
+      "glob": "tla2sany/StandardModules/tlc2.module.TLCBuiltInOverrides.class"
+    },
+    {
+      "glob": "tla2sany/StandardModules/tlc2.overrides.TLCOverrides.class"
+    },
+    {
+      "glob": "tlc2.module.TLCBuiltInOverrides.class"
+    },
+    {
+      "glob": "tlc2.overrides.TLCOverrides.class"
+    },
+    {
+      "module": "jdk.jfr",
+      "glob": "jdk/jfr/internal/query/view.ini"
+    }
+  ]
+}
