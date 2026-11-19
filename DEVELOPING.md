@@ -71,7 +71,7 @@ ant -f customBuild.xml test-graal-native # Smoke-tests the executables
 dist/native/tlc test-model/pcal/Bakery.tla
 ```
 Keep `libmanagement_ext.so` (or its platform equivalent) next to `tlc`; TLC loads it for its JMX statistics.
-The `GraalVM Native Executables` workflow builds and smoke-tests the executables with GraalVM CE on Linux, macOS, and Windows whenever the build file, the workload, the reachability metadata, or the module overrides change.
+The `GraalVM Native Executables` workflow builds and smoke-tests the executables with GraalVM CE on Linux, macOS, and Windows, and with Oracle GraalVM and `-Dnative.gc=G1` on Linux, whenever the build file, the workload, the reachability metadata, or the module overrides change.
 
 By default, `tlc` uses Native Image's Serial garbage collector, which is single-threaded and becomes the bottleneck on large models.
 With [Oracle GraalVM](https://www.oracle.com/java/graalvm/) (tested with 25.0.5), pass `-Dnative.gc=G1` to build `tlc` with the G1 collector instead:

@@ -23,14 +23,27 @@ concurrency:
 
 jobs:
   build-and-test-graal-native:
-    name: Native build & test on ${{ matrix.operating-system }}
+    name: Native build & test on ${{ matrix.operating-system }} (${{ matrix.variant }})
     runs-on: ${{ matrix.operating-system }}
     permissions:
       contents: read
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - operating-system: ubuntu-latest
+            variant: ce
+            distribution: graalvm-community
+          - operating-system: macos-latest
+            variant: ce
+            distribution: graalvm-community
+          - operating-system: windows-latest
+            variant: ce
+            distribution: graalvm-community
+          - operating-system: ubuntu-latest
+            variant: oracle-g1
+            distribution: graalvm
+            ant-args: -Dnative.gc=G1
     steps:
       - name: Configure LF line endings in git
         if: matrix.operating-system == 'windows-latest'
@@ -42,10 +55,10 @@ jobs:
           # The jgit task nested in customBuild.xml requires repository history.
           fetch-depth: '0'
 
-      - name: Set up GraalVM CE 25
+      - name: Set up GraalVM 25 (${{ matrix.distribution }})
         uses: graalvm/setup-graalvm@f70bc8032f90a104502824a54bcb94b6f01715bc # v1.6.8
         with:
-          distribution: 'graalvm-community'
+          distribution: ${{ matrix.distribution }}
           java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -57,7 +70,7 @@ jobs:
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml info compile compile-test dist
 
       - name: Build native executables
-        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native
+        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native ${{ matrix.ant-args }}
 
       - name: Smoke-test native executables
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml test-graal-native
@@ -66,11 +79,11 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: graal-native-logs-${{ matrix.operating-system }}
+          name: graal-native-logs-${{ matrix.operating-system }}-${{ matrix.variant }}
           path: tlatools/org.lamport.tlatools/target/native-image/*.log
 
       - name: Upload native executables
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: graal-native-${{ matrix.operating-system }}
+          name: graal-native-${{ matrix.operating-system }}-${{ matrix.variant }}
           path: tlatools/org.lamport.tlatools/dist/native/
