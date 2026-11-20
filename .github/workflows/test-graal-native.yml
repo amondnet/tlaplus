@@ -16,6 +16,7 @@ on:
       - 'tlatools/org.lamport.tlatools/src/META-INF/native-image/**'
       - 'tlatools/org.lamport.tlatools/src/tlc2/module/**'
   workflow_dispatch:
+  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -25,6 +26,9 @@ jobs:
   build-and-test-graal-native:
     name: Native build & test on ${{ matrix.operating-system }} (${{ matrix.variant }})
     runs-on: ${{ matrix.operating-system }}
+    env:
+      # Without it, the executables require the macOS version of the runner.
+      MACOSX_DEPLOYMENT_TARGET: '11.0'
     permissions:
       contents: read
     strategy:
@@ -34,16 +38,30 @@ jobs:
           - operating-system: ubuntu-latest
             variant: ce
             distribution: graalvm-community
+            platform: linux-x86_64
+          - operating-system: ubuntu-24.04-arm
+            variant: ce
+            distribution: graalvm-community
+            platform: linux-aarch64
           - operating-system: macos-latest
             variant: ce
             distribution: graalvm-community
+            platform: macos-aarch64
+          - operating-system: macos-15-intel
+            variant: ce
+            distribution: graalvm-community
+            # GraalVM CE 25.0.1 is the last release with a macOS x64 build.
+            java-version: '25.0.1'
+            platform: macos-x86_64
           - operating-system: windows-latest
             variant: ce
             distribution: graalvm-community
+            platform: windows-x86_64
           - operating-system: ubuntu-latest
             variant: oracle-g1
             distribution: graalvm
             ant-args: -Dnative.gc=G1
+            platform: linux-x86_64
     steps:
       - name: Configure LF line endings in git
         if: matrix.operating-system == 'windows-latest'
@@ -55,11 +73,11 @@ jobs:
           # The jgit task nested in customBuild.xml requires repository history.
           fetch-depth: '0'
 
-      - name: Set up GraalVM 25 (${{ matrix.distribution }})
+      - name: Set up GraalVM ${{ matrix.java-version || '25' }} (${{ matrix.distribution }})
         uses: graalvm/setup-graalvm@f70bc8032f90a104502824a54bcb94b6f01715bc # v1.6.8
         with:
           distribution: ${{ matrix.distribution }}
-          java-version: '25'
+          java-version: ${{ matrix.java-version || '25' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install zlib headers
@@ -70,7 +88,7 @@ jobs:
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml info compile compile-test dist
 
       - name: Build native executables
-        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native ${{ matrix.ant-args }}
+        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native '-Dnative.march=compatibility' ${{ matrix.ant-args }}
 
       - name: Smoke-test native executables
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml test-graal-native
@@ -79,11 +97,27 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: graal-native-logs-${{ matrix.operating-system }}-${{ matrix.variant }}
+          name: graal-native-logs-${{ matrix.variant }}-${{ matrix.platform }}
           path: tlatools/org.lamport.tlatools/target/native-image/*.log
+
+      - name: Package native executables
+        shell: bash
+        env:
+          ARCHIVE: tlatools-native${{ matrix.variant != 'ce' && format('-{0}', matrix.variant) || '' }}-${{ matrix.platform }}
+        run: |
+          mkdir -p target/native-archive
+          cp -R tlatools/org.lamport.tlatools/dist/native "target/native-archive/$ARCHIVE"
+          cd target/native-archive
+          if [ "$RUNNER_OS" = Windows ]; then
+            7z a -tzip "$ARCHIVE.zip" "$ARCHIVE"
+          else
+            tar -czf "$ARCHIVE.tar.gz" "$ARCHIVE"
+          fi
+          rm -r "$ARCHIVE"
 
       - name: Upload native executables
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: graal-native-${{ matrix.operating-system }}-${{ matrix.variant }}
-          path: tlatools/org.lamport.tlatools/dist/native/
+          name: graal-native-${{ matrix.variant }}-${{ matrix.platform }}
+          path: target/native-archive/*
+          if-no-files-found: error

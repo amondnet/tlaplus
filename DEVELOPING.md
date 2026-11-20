@@ -71,7 +71,12 @@ ant -f customBuild.xml test-graal-native # Smoke-tests the executables
 dist/native/tlc test-model/pcal/Bakery.tla
 ```
 Keep `libmanagement_ext.so` (or its platform equivalent) next to `tlc`; TLC loads it for its JMX statistics.
-The `GraalVM Native Executables` workflow builds and smoke-tests the executables with GraalVM CE on Linux, macOS, and Windows, and with Oracle GraalVM and `-Dnative.gc=G1` on Linux, whenever the build file, the workload, the reachability metadata, or the module overrides change.
+The `GraalVM Native Executables` workflow builds and smoke-tests the executables with GraalVM CE on Linux (x86_64 and aarch64), macOS (aarch64 and x86_64), and Windows (x86_64), and with Oracle GraalVM and `-Dnative.gc=G1` on Linux, whenever the build file, the workload, the reachability metadata, or the module overrides change.
+The CI workflow runs it on every push to `master` and uploads the GraalVM CE executables as `tlatools-native-<os>-<arch>.tar.gz` (`.zip` on Windows) to the current release and the rolling release.
+macOS x86_64 is built with GraalVM CE 25.0.1, the last release for that platform.
+Native Image optimizes for the build machine's CPU generation (`x86-64-v3` on x86_64) by default, so CI passes `-Dnative.march=compatibility` to build executables that also run on older CPUs.
+Set `MACOSX_DEPLOYMENT_TARGET` (CI uses `11.0`) to build macOS executables that run on releases older than the build machine.
+The macOS executables are not signed; if macOS refuses to run them after a download in the browser, remove the quarantine attribute with `xattr -dr com.apple.quarantine <extracted directory>`.
 
 By default, `tlc` uses Native Image's Serial garbage collector, which is single-threaded and becomes the bottleneck on large models.
 With [Oracle GraalVM](https://www.oracle.com/java/graalvm/) (tested with 25.0.5), pass `-Dnative.gc=G1` to build `tlc` with the G1 collector instead:
