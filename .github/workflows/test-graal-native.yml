@@ -88,7 +88,7 @@ jobs:
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml info compile compile-test dist
 
       - name: Build native executables
-        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native -Dnative.march=compatibility ${{ matrix.ant-args }}
+        run: ant -f tlatools/org.lamport.tlatools/customBuild.xml dist-graal-native '-Dnative.march=compatibility' ${{ matrix.ant-args }}
 
       - name: Smoke-test native executables
         run: ant -f tlatools/org.lamport.tlatools/customBuild.xml test-graal-native
