@@ -72,7 +72,7 @@ dist/native/tlc test-model/pcal/Bakery.tla
 ```
 Keep `libmanagement_ext.so` (or its platform equivalent) next to `tlc`; TLC loads it for its JMX statistics.
 The `GraalVM Native Executables` workflow builds and smoke-tests the executables with GraalVM CE on Linux (x86_64 and aarch64), macOS (aarch64 and x86_64), and Windows (x86_64), and with Oracle GraalVM and `-Dnative.gc=G1` on Linux, whenever the build file, the workload, the reachability metadata, or the module overrides change.
-The CI workflow runs it on every push to `master` and uploads the GraalVM CE executables as `tlatools-native-<os>-<arch>.tar.gz` (`.zip` on Windows) to the current release and the rolling release.
+The CI workflow runs it on every push to `master` and uploads the GraalVM CE executables as `tlatools-native-<os>-<arch>.tar.gz` (`.zip` on Windows) to the current release and the rolling release. Pushing a `native-*` tag (or running the *Release Native Executables* workflow manually) publishes them to a prerelease of that name instead; it needs no repository secrets, so it also works in forks.
 macOS x86_64 is built with GraalVM CE 25.0.1, the last release for that platform.
 Native Image optimizes for the build machine's CPU generation (`x86-64-v3` on x86_64) by default, so CI passes `-Dnative.march=compatibility` to build executables that also run on older CPUs.
 Set `MACOSX_DEPLOYMENT_TARGET` (CI uses `11.0`) to build macOS executables that run on releases older than the build machine.
