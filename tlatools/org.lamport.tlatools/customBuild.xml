@@ -732,6 +732,8 @@
 				<arg value="-cp" />
 				<arg file="${dist.file}" />
 				<arg value="@{optimization}" />
+				<arg if:set="native.march" value="-march=${native.march}" />
+				<arg if:set="env.MACOSX_DEPLOYMENT_TARGET" value="-EMACOSX_DEPLOYMENT_TARGET" />
 				<options />
 				<arg value="-o" />
 				<arg file="${native.dist.dir}/@{name}" />
