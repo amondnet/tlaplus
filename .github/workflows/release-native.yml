@@ -1,0 +1,43 @@
+name: Release Native Executables
+
+# Publishes the GraalVM CE executables to a release of their own. Unlike the
+# CI workflow, it needs no secrets, so it also works in forks.
+on:
+  push:
+    tags:
+      - 'native-*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to create or update, e.g. native-2026.11.20'
+        required: true
+
+jobs:
+  native:
+    uses: ./.github/workflows/test-graal-native.yml
+    permissions:
+      contents: read
+
+  release:
+    needs: native
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - name: Download native executables
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          pattern: graal-native-ce-*
+          path: native
+          merge-multiple: true
+
+      - name: Upload native executables to the release
+        run: |
+          if ! gh release view "$TAG" -R "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release create "$TAG" -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --prerelease --generate-notes --title "Native executables $TAG"
+          fi
+          gh release upload "$TAG" -R "$GITHUB_REPOSITORY" --clobber native/*
